@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.IO;
 
 namespace GeomComp_Lab1
 {
@@ -50,13 +51,13 @@ namespace GeomComp_Lab1
         }
 
         //Populate area with points
-        public void Populate()
+        public void DrawPoints()
         {
-            Populate(this.min, this.max);
+            DrawPoints(this.min, this.max);
         }
 
         //Populate given coordianates with points
-        public void Populate(Point min, Point max )
+        public void DrawPoints(Point min, Point max)
         {
             using (Pen redPen = new Pen(Color.Red))
             {
@@ -73,6 +74,12 @@ namespace GeomComp_Lab1
             }
         }
 
+        public void DrawPoints(string path)
+        { 
+
+        }
+
+        //draw point from coord, with pen
         private void drawPoint(Point coord, Pen innerPen, Pen outerPen)
         {
                 this.canvas.DrawEllipse(innerPen, coord.X, coord.Y, 1, 1);

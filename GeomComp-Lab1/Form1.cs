@@ -25,7 +25,7 @@ namespace GeomComp_Lab1
             Point min = new Point(50,50);
             Point max = new Point(250, 250);
             PointGenerator pointMaker = new PointGenerator(min, max, 20, formGraph);
-            pointMaker.Populate();
+            pointMaker.DrawPoints();
             array = pointMaker.PointCollection;
         }
 
