@@ -33,11 +33,11 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(4, 2);
+            this.btnStart.Location = new System.Drawing.Point(0, 0);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(75, 23);
+            this.btnStart.Size = new System.Drawing.Size(35, 20);
             this.btnStart.TabIndex = 0;
-            this.btnStart.Text = "Start";
+            this.btnStart.Text = "GO";
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
