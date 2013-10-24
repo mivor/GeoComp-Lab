@@ -13,18 +13,19 @@ namespace GeomComp_Lab1
     public partial class Form1 : Form
     {
         PointGenerator pointMaker;
+        Graphics formGraph;
         Point min = new Point(50, 50);
         Point max = new Point(250, 250);
 
         public Form1()
         {
             InitializeComponent();
+            formGraph = this.CreateGraphics();
         }
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            Graphics formGraph = this.CreateGraphics();
-            pointMaker = new PointGenerator(min, max, 20, formGraph);
+            pointMaker = new PointGenerator(min, max, 8, formGraph);
             pointMaker.DrawPoints(@"../../test.txt");
         }
 
