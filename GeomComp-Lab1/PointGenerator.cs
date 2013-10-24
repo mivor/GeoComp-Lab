@@ -33,7 +33,7 @@ namespace GeomComp_Lab1
         }
 
         //Initializer with point coordinates
-        public PointGenerator(Point  upper, Point lower, int number, Graphics canvas)
+        public PointGenerator(Point upper, Point lower, int number, Graphics canvas)
         {
             min = upper;
             max = lower;
@@ -43,7 +43,7 @@ namespace GeomComp_Lab1
         }
 
         //Initializer with number and graph - Coordinates later
-        public PointGenerator( int number, Graphics canvas)
+        public PointGenerator(int number, Graphics canvas)
         {
             this.number = number;
             this.canvas = canvas;
@@ -59,31 +59,32 @@ namespace GeomComp_Lab1
         //Populate given coordianates with points
         public void DrawPoints(Point min, Point max)
         {
-            using (Pen redPen = new Pen(Color.Red))
+            using (Pen redPen = new Pen(Color.Red), blackPen = new Pen(Color.Black))
             {
-                using (Pen blackPen = new Pen(Color.Black))
+                for (int i = 0; i < number; i++)
                 {
-                    for (int i = 0; i < number; i++)
-                    {
-                        int xCoord = rnd.Next(min.X, max.X + 1);
-                        int yCoord = rnd.Next(min.Y, max.Y + 1);
-                        pointCollection[i] = new Point(xCoord, yCoord);
-                        drawPoint(pointCollection[i], blackPen, redPen);
-                    }
+                    int xCoord = rnd.Next(min.X, max.X + 1);
+                    int yCoord = rnd.Next(min.Y, max.Y + 1);
+                    pointCollection[i] = new Point(xCoord, yCoord);
+                    drawPoint(pointCollection[i], blackPen, redPen);
                 }
             }
         }
 
         public void DrawPoints(string path)
-        { 
+        {
+            using (Pen redPen = new Pen(Color.Red), blackPen = new Pen(Color.Black))
+            using (StreamReader reader = new StreamReader(path))
+            {
 
+            }
         }
 
         //draw point from coord, with pen
         private void drawPoint(Point coord, Pen innerPen, Pen outerPen)
         {
-                this.canvas.DrawEllipse(innerPen, coord.X, coord.Y, 1, 1);
-                this.canvas.DrawEllipse(outerPen , coord.X-1, coord.Y-1, 2, 2);
+            this.canvas.DrawEllipse(innerPen, coord.X, coord.Y, 1, 1);
+            this.canvas.DrawEllipse(outerPen, coord.X - 1, coord.Y - 1, 2, 2);
         }
 
     }
