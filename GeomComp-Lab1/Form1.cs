@@ -12,6 +12,10 @@ namespace GeomComp_Lab1
 {
     public partial class Form1 : Form
     {
+        PointGenerator pointMaker;
+        Point min = new Point(50, 50);
+        Point max = new Point(250, 250);
+
         public Form1()
         {
             InitializeComponent();
@@ -20,18 +24,13 @@ namespace GeomComp_Lab1
         private void Form1_Shown(object sender, EventArgs e)
         {
             Graphics formGraph = this.CreateGraphics();
-            Point[] array;
-            //formGraph.DrawRectangle(new Pen(Color.Blue), 20, 20, 200, 200);
-            Point min = new Point(50,50);
-            Point max = new Point(250, 250);
-            PointGenerator pointMaker = new PointGenerator(min, max, 20, formGraph);
+            pointMaker = new PointGenerator(min, max, 20, formGraph);
             pointMaker.DrawPoints(@"../../test.txt");
-            array = pointMaker.PointCollection;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-
+            Point[] pointArray = pointMaker.PointCollection;
         }
     }
 }
