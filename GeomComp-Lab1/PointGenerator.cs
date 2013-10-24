@@ -81,7 +81,7 @@ namespace GeomComp_Lab1
                 {
                     string line = reader.ReadLine();
                     string[] coords = line.Split(' ');
-                    pointCollection[i] = new Point(int.Parse(coords[1]), int.Parse(coords[2]));
+                    pointCollection[i] = new Point(int.Parse(coords[0]), int.Parse(coords[1]));
                     drawPoint(pointCollection[i], blackPen, redPen);
                 }
             }
