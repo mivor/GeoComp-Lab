@@ -74,6 +74,7 @@ namespace GeomComp_Lab1
         public void DrawPoints(string path)
         {
             int number = File.ReadAllLines(path).Count();
+            pointCollection = new Point[number];
             using (Pen redPen = new Pen(Color.Red), blackPen = new Pen(Color.Black))
             using (StreamReader reader = new StreamReader(path))
             {
