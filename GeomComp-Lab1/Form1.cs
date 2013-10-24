@@ -26,7 +26,7 @@ namespace GeomComp_Lab1
         private void Form1_Shown(object sender, EventArgs e)
         {
             pointMaker = new PointGenerator(min, max, 20, formGraph);
-            pointMaker.DrawPoints(@"../../test.txt");
+            pointMaker.DrawPoints(@"../../testProb1.txt");
         }
 
         private void btnStart_Click(object sender, EventArgs e)
