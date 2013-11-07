@@ -32,12 +32,18 @@ namespace GeomComp_Lab1
             Application.Run(new Form1());
         }
 
-        public static void MinimumAreaRectangleSimple(Graphics canvas, List<Point> points)
+        public static void MinimumAreaRectangleSimple(Graphics canvas)
         {
+            //setup
+            Point minCanvas = new Point(0, 0);
+            Point maxCanvas = new Point(250, 250);
+            PointGenerator pointMaker = new PointGenerator(minCanvas, maxCanvas, 20, canvas);
+            pointMaker.DrawPoints();
+
             Point min = new Point(500, 500);
             Point max = new Point();
 
-            foreach (Point point in points)
+            foreach (Point point in pointMaker.PointCollection)
             {
                 min.X = (point.X < min.X) ? point.X : min.X;
                 min.Y = (point.Y < min.Y) ? point.Y : min.Y;

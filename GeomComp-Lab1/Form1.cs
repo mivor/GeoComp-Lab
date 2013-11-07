@@ -12,18 +12,15 @@ namespace GeomComp_Lab1
 {
     public partial class Form1 : Form
     {
-        PointGenerator pointMaker;
         Bitmap bitmap;
-        Point min = new Point(0, 0);
-        Point max = new Point(250, 250);
 
         public Form1()
         {
             InitializeComponent();
             CenterToScreen();
             listAlgorithms.DataSource = Enum.GetValues(typeof(Program.Algorithms));
-            PictureBox.Width = max.X + 30;
-            PictureBox.Height = max.Y + 30;
+            PictureBox.Width = 500;
+            PictureBox.Height = 300;
             this.Width = PictureBox.Width + 40;
             this.Height = PictureBox.Height + 80;
             bitmap = new Bitmap(PictureBox.Width, PictureBox.Height);
@@ -35,9 +32,7 @@ namespace GeomComp_Lab1
             using (Graphics gx = Graphics.FromImage(bitmap))
             {
                 gx.Clear(Color.Black);
-                pointMaker = new PointGenerator(min, max, 20, gx);
-                pointMaker.DrawPoints();
-                Program.MinimumAreaRectangleSimple(gx, pointMaker.PointCollection);
+                Program.MinimumAreaRectangleSimple(gx);
             }
             PictureBox.Invalidate();
         }
