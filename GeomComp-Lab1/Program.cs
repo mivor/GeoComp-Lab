@@ -32,7 +32,7 @@ namespace GeomComp_Lab1
             Application.Run(new Form1());
         }
 
-        public static void MinimumAreaRectangleSimple(Graphics formGraph, List<Point> points)
+        public static void MinimumAreaRectangleSimple(Graphics canvas, List<Point> points)
         {
             Point min = new Point(500, 500);
             Point max = new Point();
@@ -44,7 +44,7 @@ namespace GeomComp_Lab1
                 max.X = (point.X > max.X) ? point.X : max.X;
                 max.Y = (point.Y > max.Y) ? point.Y : max.Y;
             }
-            formGraph.DrawRectangle(new Pen(Color.Blue), min.X, min.Y, max.X - min.X, max.Y - min.Y);
+            canvas.DrawRectangle(new Pen(Color.Blue), min.X, min.Y, max.X - min.X, max.Y - min.Y);
         }
     }
 }
