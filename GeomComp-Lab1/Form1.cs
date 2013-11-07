@@ -21,6 +21,7 @@ namespace GeomComp_Lab1
         {
             InitializeComponent();
             CenterToScreen();
+            listAlgorithms.DataSource = Enum.GetValues(typeof(Program.Algorithms));
             PictureBox.Width = max.X + 30;
             PictureBox.Height = max.Y + 30;
             bitmap = new Bitmap(PictureBox.Width, PictureBox.Height);
@@ -37,6 +38,7 @@ namespace GeomComp_Lab1
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            object obj = listAlgorithms.SelectedItem;
             using (Graphics gx = Graphics.FromImage(bitmap))
             {
                 Program.MinimumAreaRectangleSimple(gx, pointMaker.PointCollection);

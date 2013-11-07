@@ -9,6 +9,18 @@ namespace GeomComp_Lab1
 {
     static class Program
     {
+        public enum Algorithms
+        { 
+            MinAreaRectSimple,
+            MinAreaRect,
+            ClosestPoint,
+            MaxAreaCircle,
+            PointsInArea,
+            MinAreaTriangle,
+            MinDistancePoint,
+            MinAreaCircle
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
