@@ -39,7 +39,7 @@ namespace GeomComp_Lab1
         {
             using (Graphics gx = Graphics.FromImage(bitmap))
             {
-                Program.MinimumAreaRectangleSimple(gx, pointMaker);
+                Program.MinimumAreaRectangleSimple(gx, pointMaker.PointCollection);
             }
             PictureBox.Invalidate();
         }
