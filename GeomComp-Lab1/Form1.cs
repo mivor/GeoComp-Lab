@@ -24,16 +24,9 @@ namespace GeomComp_Lab1
             listAlgorithms.DataSource = Enum.GetValues(typeof(Program.Algorithms));
             PictureBox.Width = max.X + 30;
             PictureBox.Height = max.Y + 30;
-            bitmap = new Bitmap(PictureBox.Width, PictureBox.Height);
-            using (Graphics gx = Graphics.FromImage(bitmap))
-            {
-                pointMaker = new PointGenerator(min, max, 20, gx);
-                pointMaker.DrawPoints();
-            }
-            
             this.Width = PictureBox.Width + 40;
             this.Height = PictureBox.Height + 80;
-            PictureBox.Invalidate();
+            bitmap = new Bitmap(PictureBox.Width, PictureBox.Height);
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -41,6 +34,9 @@ namespace GeomComp_Lab1
             object obj = listAlgorithms.SelectedItem;
             using (Graphics gx = Graphics.FromImage(bitmap))
             {
+                gx.Clear(Color.Black);
+                pointMaker = new PointGenerator(min, max, 20, gx);
+                pointMaker.DrawPoints();
                 Program.MinimumAreaRectangleSimple(gx, pointMaker.PointCollection);
             }
             PictureBox.Invalidate();
