@@ -49,7 +49,7 @@
             this.Controls.Add(this.btnStart);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Shown += new System.EventHandler(this.Form1_Shown);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.ResumeLayout(false);
 
         }

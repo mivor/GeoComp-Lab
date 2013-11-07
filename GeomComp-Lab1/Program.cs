@@ -19,5 +19,20 @@ namespace GeomComp_Lab1
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
+
+        public static void MinimumAreaRectangleSimple(Graphics formGraph, PointGenerator pointMaker)
+        {
+            Point min = new Point(500, 500);
+            Point max = new Point();
+
+            foreach (Point point in pointMaker.PointCollection)
+            {
+                min.X = (point.X < min.X) ? point.X : min.X;
+                min.Y = (point.Y < min.Y) ? point.Y : min.Y;
+                max.X = (point.X > max.X) ? point.X : max.X;
+                max.Y = (point.Y > max.Y) ? point.Y : max.Y;
+            }
+            formGraph.DrawRectangle(new Pen(Color.Blue), min.X, min.Y, max.X - min.X, max.Y - min.Y);
+        }
     }
 }

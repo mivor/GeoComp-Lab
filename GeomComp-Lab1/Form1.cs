@@ -20,29 +20,19 @@ namespace GeomComp_Lab1
         public Form1()
         {
             InitializeComponent();
+            CenterToScreen();
             formGraph = this.CreateGraphics();
             pointMaker = new PointGenerator(min, max, 20, formGraph);
-            
-        }
-
-        private void Form1_Shown(object sender, EventArgs e)
-        {
-            pointMaker.DrawPoints(@"testProb1.txt");
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            Point min = new Point(500,500);
-            Point max = new Point();
+            Program.MinimumAreaRectangleSimple(formGraph, pointMaker);
+        }
 
-            foreach (Point point in pointMaker.PointCollection)
-            {
-                min.X = (point.X < min.X) ? point.X : min.X;
-                min.Y = (point.Y < min.Y) ? point.Y : min.Y;
-                max.X = (point.X > max.X) ? point.X : max.X;
-                max.Y = (point.Y > max.Y) ? point.Y : max.Y;
-            }
-            formGraph.DrawRectangle(new Pen(Color.Blue), min.X, min.Y, max.X - min.X, max.Y - min.Y);
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            pointMaker.DrawPoints();
         }
     }
 }
