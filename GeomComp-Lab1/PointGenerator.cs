@@ -10,14 +10,14 @@ namespace GeomComp_Lab1
 {
     class PointGenerator
     {
-        private Point[] pointCollection;
+        private List<Point> pointCollection;
         private Point min; // top right corner
         private Point max; // bottom left corner
         private int number;
         private Graphics canvas;
         private Random rnd = new Random();
 
-        public Point[] PointCollection
+        public List<Point> PointCollection
         {
             get { return pointCollection; }
         }
@@ -29,7 +29,7 @@ namespace GeomComp_Lab1
             max = new Point(lowerX, lowerY);
             this.number = number;
             this.canvas = canvas;
-            pointCollection = new Point[number];
+            pointCollection = new List<Point>();
         }
 
         //Initializer with point coordinates
@@ -39,7 +39,7 @@ namespace GeomComp_Lab1
             max = lower;
             this.number = number;
             this.canvas = canvas;
-            pointCollection = new Point[number];
+            pointCollection = new List<Point>();
         }
 
         //Initializer with number and graph - Coordinates later
@@ -47,7 +47,7 @@ namespace GeomComp_Lab1
         {
             this.number = number;
             this.canvas = canvas;
-            pointCollection = new Point[number];
+            pointCollection = new List<Point>();
         }
 
         //Populate area with points
@@ -65,7 +65,7 @@ namespace GeomComp_Lab1
                 {
                     int xCoord = rnd.Next(min.X, max.X + 1);
                     int yCoord = rnd.Next(min.Y, max.Y + 1);
-                    pointCollection[i] = new Point(xCoord, yCoord);
+                    pointCollection.Add( new Point(xCoord, yCoord) );
                     drawPoint(pointCollection[i], blackPen, redPen);
                 }
             }
@@ -73,16 +73,17 @@ namespace GeomComp_Lab1
 
         public void DrawPoints(string path)
         {
-            int number = File.ReadAllLines(path).Count();
-            pointCollection = new Point[number];
+            pointCollection = new List<Point>();
             using (Pen redPen = new Pen(Color.Red), blackPen = new Pen(Color.Black))
             using (StreamReader reader = new StreamReader(path))
             {
-                for (int i = 0; i < number; i++)
+                string line;
+                while( ( line = reader.ReadLine() ) != null )
                 {
-                    string[] coords = reader.ReadLine().Split(' ');
-                    pointCollection[i] = new Point(int.Parse(coords[0]), int.Parse(coords[1]));
-                    drawPoint(pointCollection[i], blackPen, redPen);
+                    string[] coords = line.Split(' ');
+                    Point p = new Point(int.Parse(coords[0]), int.Parse(coords[1]));
+                    pointCollection.Add(p);
+                    drawPoint(p, blackPen, redPen);
                 }
             }
         }

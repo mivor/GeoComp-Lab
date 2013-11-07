@@ -32,11 +32,10 @@ namespace GeomComp_Lab1
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            Point[] pointArray = pointMaker.PointCollection;
             Point min = new Point(500,500);
             Point max = new Point();
 
-            foreach (Point point in pointArray)
+            foreach (Point point in pointMaker.PointCollection)
             {
                 min.X = (point.X < min.X) ? point.X : min.X;
                 min.Y = (point.Y < min.Y) ? point.Y : min.Y;
