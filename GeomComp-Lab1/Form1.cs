@@ -21,12 +21,13 @@ namespace GeomComp_Lab1
         {
             InitializeComponent();
             formGraph = this.CreateGraphics();
+            pointMaker = new PointGenerator(min, max, 20, formGraph);
+            
         }
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            pointMaker = new PointGenerator(min, max, 20, formGraph);
-            pointMaker.DrawPoints(@"../../testProb1.txt");
+            pointMaker.DrawPoints(@"testProb1.txt");
         }
 
         private void btnStart_Click(object sender, EventArgs e)
